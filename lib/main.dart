@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'configs/app_theme.dart'; // Only if you created theme file
+import 'configs/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Parking App',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme
-          .lightTheme, // You can comment this out if not yet implemented
-      home: const Scaffold(
-        body: Center(child: Text("Parking App Initialized")),
-      ),
+      theme: AppTheme.lightTheme,
+      home: Scaffold(body: Center(child: Text("Theme Applied"))),
     );
   }
 }
