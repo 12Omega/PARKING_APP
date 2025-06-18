@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
-import 'configs/app_theme.dart';
+import 'themes/app_theme.dart';
+import 'utils/font_constants.dart';
+import 'screens/dashboard_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ParkingApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ParkingApp extends StatelessWidget {
+  const ParkingApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Parking App',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: Scaffold(body: Center(child: Text("Theme Applied"))),
+      themeMode: ThemeMode.system,
+      theme: AppTheme.lightTheme.copyWith(textTheme: FontConstants.textTheme),
+      darkTheme: AppTheme.darkTheme.copyWith(
+        textTheme: FontConstants.textTheme,
+      ),
+      home: const DashboardScreen(),
     );
   }
 }
