@@ -41,9 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return FormContainer(
-      title: 'Welcome Back',
-      children: [
-        Form(
+      // title: 'Welcome Back', // Removed title
+      child: Form( // Changed children to child, and passed Column directly
           key: _formKey,
           child: Column(
             children: [
@@ -67,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   : PrimaryButton(text: 'Login', onPressed: _handleLogin),
               const SizedBox(height: 20),
               TextButton(
-                onPressed: () => Navigator.pushNamed(context, Routes.signup),
+                onPressed: () => Navigator.pushNamed(context, Routes.register), // Changed Routes.signup to Routes.register
                 child: const Text(
                   "Don't have an account? Sign up",
                   style: TextStyle(color: Color(0xFF1976D2)),
@@ -76,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
-      ],
+      // ], // Removed extra bracket if children was a list
     );
   }
 }
