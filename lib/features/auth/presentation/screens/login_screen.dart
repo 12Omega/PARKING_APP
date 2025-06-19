@@ -41,42 +41,44 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return FormContainer(
-      title: 'Welcome Back',
-      children: [
-        Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              AppTextField(
-                hintText: 'Email',
-                controller: _emailCtrl,
-                validator: (val) =>
-                    val!.contains('@') ? null : 'Enter a valid email',
+      // title: 'Welcome Back', // Removed title
+      child: Form(
+        // Changed children to child, and passed Column directly
+        key: _formKey,
+        child: Column(
+          children: [
+            AppTextField(
+              hintText: 'Email',
+              controller: _emailCtrl,
+              validator: (val) =>
+                  val!.contains('@') ? null : 'Enter a valid email',
+            ),
+            const SizedBox(height: 20),
+            AppTextField(
+              hintText: 'Password',
+              obscureText: true,
+              controller: _passwordCtrl,
+              validator: (val) => val!.length >= 6 ? null : 'Min 6 characters',
+            ),
+            const SizedBox(height: 30),
+            _isLoading
+                ? const CircularProgressIndicator()
+                : PrimaryButton(text: 'Login', onPressed: _handleLogin),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: () => Navigator.pushNamed(
+                context,
+                Routes.register,
+              ), // Changed Routes.signup to Routes.register
+              child: const Text(
+                "Don't have an account? Sign up",
+                style: TextStyle(color: Color(0xFF1976D2)),
               ),
-              const SizedBox(height: 20),
-              AppTextField(
-                hintText: 'Password',
-                obscureText: true,
-                controller: _passwordCtrl,
-                validator: (val) =>
-                    val!.length >= 6 ? null : 'Min 6 characters',
-              ),
-              const SizedBox(height: 30),
-              _isLoading
-                  ? const CircularProgressIndicator()
-                  : PrimaryButton(text: 'Login', onPressed: _handleLogin),
-              const SizedBox(height: 20),
-              TextButton(
-                onPressed: () => Navigator.pushNamed(context, Routes.signup),
-                child: const Text(
-                  "Don't have an account? Sign up",
-                  style: TextStyle(color: Color(0xFF1976D2)),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
+      // ], // Removed extra bracket if children was a list
     );
   }
 }
