@@ -9,6 +9,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Parking App',
       theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system, // Can be .light or .dark as default
       debugShowCheckedModeBanner: false,
       home: const Scaffold(body: Center(child: Text('Welcome to Parking App'))),
     );
