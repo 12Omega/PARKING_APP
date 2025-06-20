@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:parking_app/screens/dashboard_screen.dart';
+import 'package:parking_app/features/home/presentation/view/dashboard_view.dart';
+
 // import 'package:parking_app/screens/home_screen.dart'; // For checking initial content - Removed
+
+@override
+Widget build(BuildContext context) {
+  return const Scaffold(
+    body: Center(
+      child: Text('Home Screen Content'), // ✅ this must match the test exactly
+    ),
+  );
+}
 
 void main() {
   group('DashboardScreen Tests', () {
@@ -72,6 +82,8 @@ void main() {
       expect(find.text('Profile Screen Content'), findsNothing);
       bnb = tester.widget(find.byType(BottomNavigationBar));
       expect(bnb.currentIndex, 0); // Home tab is index 0
+
+      expect(find.text('Home Screen Content'), findsOneWidget);
     });
   });
 }
